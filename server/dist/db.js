@@ -22,6 +22,7 @@ async function connectMongo() {
             await exports.client.connect();
             isConnected = true;
         }
+        console.log("db connected");
         return exports.client.db();
     }
     catch (err) {
