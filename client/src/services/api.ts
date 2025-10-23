@@ -4,7 +4,10 @@ export const api = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "/api" }),
   endpoints: (builder) => ({
     getAlbums: builder.query<any, void>({
-      query: () => "/albums"
+      query: () => "/albums",
+      transformResponse: (response: any) => {
+        return response[0].data;
+      }
     })
   })
 });

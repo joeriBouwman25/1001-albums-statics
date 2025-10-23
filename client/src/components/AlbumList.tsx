@@ -1,8 +1,19 @@
-import { useGetAlbumsQuery } from "../services/api";
-
-export const AlbumList = () => {
-  const { data, isLoading } = useGetAlbumsQuery();
-  console.log(data);
-
-  return isLoading ? <h1>Laden...</h1> : <div>hoi</div>;
+export const AlbumList = ({ albums }) => {
+  console.log(albums);
+  return (
+    <div>
+      {albums.map((album) => (
+        <>
+          <h2>
+            {album.artist} - {album.title}
+          </h2>
+          <img src={album.artwork} />
+          <div>
+            <p>Year: {album.year}</p>
+            <p>Length: {album.length}</p>
+          </div>
+        </>
+      ))}
+    </div>
+  );
 };
