@@ -1,17 +1,18 @@
 {
-  "name": "1001-albums-statics",
+  "name": "1001-albums-statics-root",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
+  "workspaces": [
+    "server",
+    "client"
+  ],
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "dev": "concurrently \"pnpm --filter server run dev\" \"pnpm --filter client run dev\"",
+    "build": "pnpm --filter client run build && pnpm --filter server run build",
+    "start": "pnpm --filter server run start",
+    "lint": "eslint . --ext .ts,.tsx",
+    "typecheck": "tsc -p tsconfig.base.json --noEmit"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
@@ -21,6 +22,7 @@
     "@types/react": "^19.1.16",
     "@types/react-dom": "^19.1.9",
     "@vitejs/plugin-react-swc": "^4.1.0",
+    "concurrently": "^8.2.2",
     "eslint": "^9.36.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.22",
