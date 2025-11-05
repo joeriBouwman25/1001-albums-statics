@@ -6,7 +6,7 @@ export const AlbumList = ({ albums }: {albums: Album[]}) => {
 
   return (
     <section>
-      {albums.map((album) => (
+      {albums.map((album: Album) => (
           <AlbumCard key={album.id} album={album} />
       ))}
     </section>
