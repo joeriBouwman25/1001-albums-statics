@@ -1,73 +1,109 @@
-# React + TypeScript + Vite
+# 1001 Albums Statistics
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack application for tracking and visualizing album statistics.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Frontend**: React + TypeScript + Vite
+- **Backend**: Node.js + Express + TypeScript
+- **Package Manager**: pnpm (monorepo setup)
 
-## React Compiler
+## Development
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+### Prerequisites
 
-## Expanding the ESLint configuration
+- Node.js 20+
+- pnpm 10.19.0+
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Installation
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+pnpm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Running Locally
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Start both client and server in development mode:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+pnpm dev
 ```
+
+This will start:
+- Client on http://localhost:3000
+- Server on http://localhost:5000
+
+### Build
+
+Build both client and server:
+
+```bash
+pnpm build
+```
+
+### Scripts
+
+- `pnpm dev` - Run client and server in development mode
+- `pnpm build` - Build both client and server for production
+- `pnpm start` - Start the production server
+- `pnpm lint` - Run ESLint
+- `pnpm typecheck` - Run TypeScript type checking
+- `pnpm deploy` - Build and prepare client for deployment
+
+## Deployment to GitHub Pages
+
+This project is configured for automatic deployment to GitHub Pages via GitHub Actions.
+
+### Setup Instructions
+
+1. **Enable GitHub Pages in your repository**:
+   - Go to your repository on GitHub
+   - Navigate to Settings → Pages
+   - Under "Build and deployment", set Source to **GitHub Actions**
+
+2. **Push to main branch**:
+   ```bash
+   git add .
+   git commit -m "Setup GitHub Pages deployment"
+   git push origin main
+   ```
+
+3. **Monitor deployment**:
+   - Go to the "Actions" tab in your GitHub repository
+   - Watch the "Deploy to GitHub Pages" workflow run
+   - Once complete, your site will be live at: `https://[username].github.io/1001-albums-statistics/`
+
+### Manual Deployment
+
+You can also build locally and deploy manually:
+
+```bash
+pnpm deploy
+```
+
+Then push the `client/dist` directory to the `gh-pages` branch (requires additional setup).
+
+### Configuration Notes
+
+- The app is configured with base path `/1001-albums-statistics/` for GitHub Pages
+- The `.nojekyll` file is automatically created to ensure proper routing
+- GitHub Actions workflow triggers on every push to `main` branch
+- You can also manually trigger deployment from the Actions tab
+
+## Project Structure
+
+```
+├── client/          # React frontend
+│   └── src/
+├── server/          # Express backend
+│   └── src/
+└── .github/
+    └── workflows/   # GitHub Actions
+```
+
+## Notes
+
+- GitHub Pages only hosts the static frontend (client)
+- For full-stack functionality, you'll need to deploy the server separately (e.g., Heroku, Railway, Render)
+- Update API endpoints in the client to point to your deployed backend server
+
