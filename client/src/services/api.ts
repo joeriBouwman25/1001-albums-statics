@@ -1,7 +1,7 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 
 export const api = createApi({
-  baseQuery: fetchBaseQuery({ baseUrl: "/api" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "https://one001-albums-statistics-api.onrender.com/api" }),
   tagTypes: ["Albums"],
   endpoints: (builder) => ({
     getAlbums: builder.query<any, void>({
