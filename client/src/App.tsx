@@ -19,16 +19,18 @@ export const App = () => {
 
   const albums = data?.flatMap((item: any) => item.albums);
 
-
   const handleClick = (decade: string) => {
     setSelectedDecade(decade)
-    setRandomAlbum(null); // Clear random album when switching decades
+    setRandomAlbum(null);
   }
 
   const handleRandomAlbum = (album: Album) => {
     setRandomAlbum(album);
-    setSelectedDecade("all"); // Show all albums when displaying random album
+    setSelectedDecade("all");
   }
+
+
+
 
   return (
     <>
