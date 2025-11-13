@@ -7,14 +7,14 @@ exports.app = void 0;
 exports.createApp = createApp;
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
-const health_1 = __importDefault(require("./routes/health"));
+const albums_1 = __importDefault(require("./routes/albums"));
 const path_1 = __importDefault(require("path"));
 const fs_1 = __importDefault(require("fs"));
 function createApp() {
     const app = (0, express_1.default)();
     app.use((0, cors_1.default)());
     app.use(express_1.default.json());
-    app.use("/api", health_1.default);
+    app.use("/api", albums_1.default);
     app.get("/", (_req, res) => {
         res.send("Server running");
     });

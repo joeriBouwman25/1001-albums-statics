@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./LoadingState.css";
+import "./loadingState.css";
 
 interface RecordType {
     id: number;

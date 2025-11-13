@@ -9,6 +9,7 @@ const mongodb_1 = require("mongodb");
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const uri = process.env.MONGODB_URI;
+const dbName = process.env.MONGO_DB_NAME;
 exports.client = uri
     ? new mongodb_1.MongoClient(uri)
     : undefined;
@@ -23,7 +24,7 @@ async function connectMongo() {
             isConnected = true;
         }
         console.log("db connected");
-        return exports.client.db();
+        return exports.client.db(dbName);
     }
     catch (err) {
         console.error("Mongo connection error", err);
