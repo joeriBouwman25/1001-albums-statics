@@ -29,9 +29,6 @@ export const App = () => {
     setSelectedDecade("all");
   }
 
-
-
-
   return (
     <>
       <div className="futuristic-orbs">
