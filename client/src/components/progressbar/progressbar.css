@@ -8,7 +8,7 @@ div:has(> div > span) {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     position: sticky;
     top: -32px;
-    z-index: 9999999;
+    z-index: 9998;
 }
 
 div:has(> div > span) > div:first-child {

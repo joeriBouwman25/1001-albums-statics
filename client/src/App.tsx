@@ -51,7 +51,7 @@ export const App = () => {
               <AlbumCard album={randomAlbum} />
             </Modal>
           )}
-          <AlbumList albums={selectedDecade === 'all' ? albums : albumsByDecade} />
+          <AlbumList albums={selectedDecade === 'all' ? albums : albumsByDecade} selectedDecade={selectedDecade} />
         </main>
       </div>
     </>
