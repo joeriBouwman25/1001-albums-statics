@@ -7,6 +7,7 @@ import {useState} from "react";
 import {ProgressBar} from "./components/progressbar/ProgressBar";
 import {Modal} from "./components/modal/Modal";
 import {Album} from "./services/types";
+import {LoadingState} from "./components/loadingState/LoadingState";
 
 export const App = () => {
   const [selectedDecade, setSelectedDecade] = useState<string>("all");
@@ -15,7 +16,7 @@ export const App = () => {
   const { data, isLoading } = useGetAlbumsQuery();
   const { data: albumsByDecade } = useGetAlbumsByDecadeQuery(selectedDecade);
 
-  if (isLoading) return <h1>Laden...</h1>;
+  if (isLoading) return <LoadingState />
 
   const albums = data?.flatMap((item: any) => item.albums);
 
